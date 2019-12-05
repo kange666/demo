@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            list-style-type: none;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="kg-checkbox">
+    <div id="part1">
+        <p>1.这是一个题目</p>
+        <ul>
+            <li><input type="checkbox"/>选择1</li>
+            <li><input type="checkbox"/>选择2</li>
+            <li><input type="checkbox"/>选择3</li>
+            <li><input type="checkbox"/>选择4</li>
+        </ul>
+    </div>
+    <div id="part2">
+        <p>2.这是一个题目</p>
+        <ul>
+            <li><input type="checkbox"/>选择1</li>
+            <li><input type="checkbox"/>选择2</li>
+            <li><input type="checkbox"/>选择3</li>
+            <li><input type="checkbox"/>选择4</li>
+        </ul>
+    </div>
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(function () {
+//        设置整体多选模块的input点击事件
+        $("#kg-checkbox").on('change','input', function () {
+//                得到所选择的checkbox，获得其父类div，在得到里面所包含的所有被选中的框
+               var $checked = $(this).parent().parent().find("input[type=checkbox]:checked").map(function () {
+//                   返回其父类li里的文本
+                   return $(this).parent("li").text();
+               }).get();
+
+            console.log($checked);
+        })
+    })
+</script>
+</body>
+</html>

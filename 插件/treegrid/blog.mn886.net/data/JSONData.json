@@ -1,0 +1,206 @@
+{
+  "page": "1",
+  "total": 2,
+  "records": "13",
+  "rows": [
+    {
+      "id": 1,
+      "cell": [
+        1,
+        "QY0001",
+        "南开区",
+        null,
+        null,
+        null,
+        0,
+        0,
+        0,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 4,
+      "cell": [
+        4,
+        "LY0007",
+        "集团",
+        0, null,
+        null,
+        null,
+        1,
+        1,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 6,
+      "cell": [
+        6,
+        "LC0006",
+        "办公地点二",
+        0, null,
+        null,
+        null,
+        2,
+        4,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 7,
+      "cell": [
+        7,
+        "FJ0013",
+        "201",
+        0, null,
+        null,
+        null,
+        3,
+        6,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 10,
+      "cell": [
+        10,
+        "XL0014",
+        "电脑办公",
+        0, null,
+        null,
+        null,
+        4,
+        7,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 8,
+      "cell": [
+        8,
+        "FJ0014",
+        "202",
+        0, null,
+        null,
+        null,
+        3,
+        6,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 11,
+      "cell": [
+        11,
+        "XL0015",
+        "机房空调",
+        0, null,
+        null,
+        null,
+        4,
+        8,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 2,
+      "cell": [
+        2,
+        "QY0003",
+        "西青区",
+        28.5, null,
+        null,
+        null,
+        0,
+        0,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 3,
+      "cell": [
+        3,
+        "LY0006",
+        "A座",
+        28.5, null,
+        null,
+        null,
+        1,
+        2,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 5,
+      "cell": [
+        5,
+        "LC0005",
+        "办公地点三",
+        28.5, null,
+        null,
+        null,
+        2,
+        3,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 9,
+      "cell": [
+        9,
+        "XL0013",
+        "测试表（.252）",
+        14.9, null,
+        null,
+        null,
+        3,
+        5,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "id": 12,
+      "cell": [
+        12,
+        "XL0017",
+        "两块表同时测试",
+        13.6, null,
+        null,
+        null,
+        3,
+        5,
+        true,
+        false,
+        true
+      ]
+    }
+  ],
+  "userdata": {
+    "amount": 3220,
+    "tax": 342,
+    "total": 3564,
+    "name": "Totals:"
+  }
+}

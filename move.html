@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>move</title>
+    <style>
+        .move{
+            width:200px;
+            height: 100px;
+            background-color: #00B83F;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="move"><h3>这是一个可拖拽的div</h3></div>
+<script src="../com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(document).mousemove(function(e) {
+//                console.log("mousemove");
+            if (!!this.move) {
+//                    console.log("mousemove1");
+                var posix = !document.move_target ? {'x': 0, 'y': 0} : document.move_target.posix,
+                        callback = document.call_down || function() {
+//                                        console.log("拖拽后");
+//                                        console.log(e.pageX);
+//                                        console.log(e.pageY);
+//                                        console.log(e.pageX - posix.x);
+//                                        console.log(e.pageY - posix.y);
+                                    $(this.move_target).css({
+                                        'top': e.pageY - posix.y,
+                                        'left': e.pageX - posix.x
+                                    });
+                                };
+                callback.call(this, e, posix);
+            }
+        }).mouseup(function(e) {
+//                console.log("mouseup");
+            if (!!this.move) {
+                var callback = document.call_up || function(){};
+                callback.call(this, e);
+//                    console.log("mouseup2");
+                $.extend(this, {
+                    'move': false,
+                    'move_target': null,
+                    'call_down': false,
+                    'call_up': false
+                });
+            }
+        });
+        var $BIPanel = $('.move').mousedown(function(e) {
+//                console.log("mousedown");
+            var $p = $(this).parent();
+//                console.log($p);
+            var w = $p.width();
+            var h = $p.height();
+            var $pp = $p[0];
+//                console.log($pp);
+            var offset = $p.offset();
+//                console.log(e.pageX);
+//                console.log(e.pageY);
+//                console.log(offset.left);
+//                console.log(offset.top);
+            $pp.posix = {'x': e.pageX - offset.left, 'y': e.pageY - offset.top};
+            $.extend(document, {'move': true, 'move_target':$pp });
+
+        });
+    });
+</script>
+</body>
+</html>

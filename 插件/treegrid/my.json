@@ -1,0 +1,5 @@
+[{"id":0,"name":"王三","level":0,"endDate":"2017-03-07","isLeaf":false,"nodeLevel":20,"expanded":true,"remark":"123"},
+
+  {"id":1,"name":"王三","level":1,"endDate":"2017-03-07","isLeaf":false,"nodeLevel":21,"parent":0,"expanded":true,"remark":"123"},
+
+  {"id":2,"name":"王三","level":2,"endDate":"2017-03-07","isLeaf":true,"nodeLevel":22,"parent":1,"expanded":true,"remark":"123"}]

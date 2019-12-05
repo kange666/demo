@@ -1,0 +1,49 @@
+public void treeJson1() {
+		JSONObject jo =null;
+		Long nodeId = getLongParameter("nodeid");
+		Long level = getLongParameter("n_level");
+		        try {
+
+		        jo = getData1(nodeId,level);
+		        } catch (Exception e) {
+		            logger.error("合同查询失败，" + e);
+		        }
+
+		        super.renderJson(jo);
+	}
+
+	private JSONObject getData1(Long nodeId,Long level) {
+		JSONObject jo = new JSONObject();
+		if (nodeId == null) {//首次
+			JSONArray ja = new JSONArray();
+			ja.add("{\"id\":1, \"cell\":[\"-第一級1\",1,\"sdf\",0,null,false,false]}");
+			//ja.add("{\"id\":2, \"cell\":[\"-第一級2\",2,\"sdf\",1,1,true,false]}");
+			ja.add("{\"id\":3, \"cell\":[\"-第二級1\",3,\"sdf\",0,null,true,false]}");
+
+			jo.put("total", 2);
+			jo.put("page", 1);
+			jo.put("records", 2);
+			jo.put("rows", ja);
+		} else {
+			if (nodeId == 1) {
+				JSONArray ja = new JSONArray();
+				ja.add("{\"id\":4, \"cell\":[\"-第一級2\",4,\"sdf\",1,1,false,false]}");
+				ja.add("{\"id\":2, \"cell\":[\"-第一級3\",2,\"sdf\",1,1,true,false]}");
+
+				jo.put("total", 2);
+				jo.put("page", 1);
+				jo.put("records", 2);
+				jo.put("rows", ja);
+			} else if (nodeId == 4) {
+				JSONArray ja = new JSONArray();
+				ja.add("{\"id\":5, \"cell\":[\"-第一級5\",5,\"sdf\",2,4,true,false]}");
+
+				jo.put("total", 1);
+				jo.put("page", 1);
+				jo.put("records", 1);
+				jo.put("rows", ja);
+			}
+		}
+
+		return jo;
+	}

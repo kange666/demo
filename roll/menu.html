@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/stock.css">
+    <script src="../com/jquery-3.3.1.min.js"></script>
+    <style>
+        /*div{*/
+            /*border:1px dashed black;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="prev">
+        <a href="javascript:;">
+            <img src="img/prev.png" alt="">
+        </a>
+    </div>
+    <div class="loop">
+    <div class="n box-list" >
+        <ul>
+            <li><a href="#"  class="item"><div class="img" id="n1">标题1</div></a></li>
+            <li><a href="#"  class="item"><div class="img">标题2</div></a></li>
+            <li><a href="#"  class="item"><div class="img">标题3</div></a></li>
+            <li><a href="#"  class="item"><div class="img">标题4</div></a></li>
+            <li><a href="#"  class="item"><div class="img">标题5</div></a></li>
+            <li><a href="#"  class="item"><div class="img">标题6</div></a></li>
+            <li><a href="#"  class="item"><div class="img">标题7</div></a></li>
+            <li><a href="#"  class="item"><div class="img">标题8</div></a></li>
+        </ul>
+    </div>
+    </div>
+    <div class="next">
+        <a href="javascript:;">
+            <img src="img/next.png" alt="">
+        </a>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    //标题滚动
+    $(function () {
+
+        $(".next a").click(function () {
+            var navId = $("#n1");
+
+            var list = $(".box-list ");
+
+            var offset = ($(".box-list li").width()) * -1;
+
+            list.stop().animate({left: offset}, "slow", function () {
+
+                var firstItem = $(".box-list ul li").first();
+                //终止循环
+                if(firstItem.text()=="标题4"){
+                    return false;
+                }else{
+                list.find("ul").append(firstItem);
+
+                $(this).css("left", "0px");
+                }
+            });
+
+        });
+
+        $(".prev a").click(function () {
+
+            var list = $(".box-list ");
+
+            var offset = ($(".box-list li").width() * -1);
+
+            var lastItem = $(".box-list ul li").last();
+            //终止循环
+            if(lastItem.text()=="标题8"){
+                return false;
+            }else{
+
+            list.find("ul").prepend(lastItem);
+
+            list.css("left", offset);
+
+            list.animate({left: "0px"}, "slow", function () {
+
+
+            })
+            }
+        });
+    });
+    </script>
+</body>
+</html>

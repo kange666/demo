@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.4.4.min.js"></script>
+    <script src="jquery.jqGrid.min.js"></script>
+    <script src="jquery.treegrid.min.js"></script>
+</head>
+    <body>
+    <script>
+    $(document).ready(function() {
+
+
+
+    jQuery("#list3").jqGrid({
+    treeGrid: true,
+    treeGridModel: 'adjacency', //treeGrid模式，跟json元數據有關 ,adjacency/nested
+    ExpandColumn : 'name',
+    url: 'my.action',
+    datatype: 'json',
+    //mtype: "POST",
+    ExpandColClick: true,
+    colNames: ["姓名","id","地址"],
+    colModel: [
+    {name: 'name', index: 'name',width:110},
+    {name:'id',index: 'id',hidden:true},
+    {name: 'address', index: 'address',width:110}
+    ],
+    jsonReader: {
+    root: "rows",
+    total: "total",
+    repeatitems: true
+    },
+    pager: "false",
+    caption: "jqGrid 动态(异步)树表格",
+    height: "auto"    // 設为具體數值則會根據實際記錄數出現垂直滾動條
+    });
+    });
+    </script>
+    <div>
+    <table id="list2"></table>
+            <div id="pager2"></div>
+
+            <table id="list3"></table>
+            </div>
+            </body>
+
+            </html>

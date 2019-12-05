@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>图片左右切换</title>
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+
+</head>
+<body>
+<div class="box">
+    <div class="prev">
+        <a href="javascript:void(0)">
+            <img src="img/prev.png" alt="">
+        </a>
+    </div>
+    <div class="loop">
+        <div class="box-list">
+            <ul>
+                <li>
+                    <a href="#">
+                        <div class="img">
+                            <img src="img/1.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img">
+                            <img src="img/2.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img">
+                            <img src="img/3.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img">
+                            <img src="img/4.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img">
+                            <img src="img/5.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img">
+                            <img src="img/6.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="next">
+        <a href="javascript:void(0)">
+            <img src="img/next.png" alt="">
+        </a>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+//图片循环滚动
+    $(function () {
+
+        $(".next a").click(function () {
+            
+            var list = $(".box-list ");
+            
+            var offset = ($(".box-list li").width()) * -1;
+
+            list.stop().animate({left: offset}, "slow", function () {
+
+                var firstItem = $(".box-list ul li").first();
+
+                list.find("ul").append(firstItem);
+
+                $(this).css("left", "0px");
+
+
+            });
+
+        });
+
+        $(".prev a").click(function () {
+
+            var list = $(".box-list ");
+
+            var offset = ($(".box-list li").width() * -1);
+
+            var lastItem = $(".box-list ul li").last();
+
+            list.find("ul").prepend(lastItem);
+
+            list.css("left", offset);
+
+            list.animate({left: "0px"}, "fast", function () {
+
+
+            })
+
+        });
+
+
+    });
+
+
+
+</script>
+</body>
+</html>

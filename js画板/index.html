@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的画板</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas_box{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* 取消苹果的弹性定位 */
+            position: fixed;
+        }
+        #msg{
+            padding: 10px;
+            position:fixed;
+            left: 40%;
+            top: 45%;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            color: #fff;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas_box">
+        <canvas width="2000" height="6000" id="canvas"></canvas>
+    </div>
+    <div id="msg">滑动屏幕试试看</div>
+</body>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script>
+    // 提示消息显示
+    $(function(){
+        $("#msg").fadeIn().delay(1000).fadeOut();
+    })
+</script>
+<script>
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+    let myColor = color16();
+    let move = true;
+    // 设置线条的样式
+    ctx.lineWidth = 3;
+
+    // PC浏览器事件
+    canvas.onmousedown = function(){
+        canvas.addEventListener('mousemove', handler, true);
+    }
+    document.onmouseup = function(){
+        move = true;
+        canvas.removeEventListener("mousemove", handler, true);
+    }
+    /* 手机浏览器事件 */
+    canvas.addEventListener('touchstart', function(){
+        canvas.addEventListener('touchmove', touchHandler, true);
+    }, false)
+    document.addEventListener('touchend', function(){
+        move = true;
+        canvas.removeEventListener("touchmove", touchHandler, true);
+    }, false)
+    // 手机浏览器touch事件
+    function touchHandler(event){
+        if (event.targetTouches.length == 1) {
+            event.preventDefault();// 阻止浏览器默认事件，重要
+            var touch = event.targetTouches[0];
+            let path = {"x":touch.clientX, "y":touch.clientY, "color":myColor, 'move':move};
+            move = false;
+            drawing(path);
+        }
+    }
+    /* 手机浏览器 */
+    function handler(e){
+        let path = {"x":e.clientX, "y":e.clientY, "color":myColor, 'move':move};
+        move = false;
+
+        drawing(path);
+    }
+    // 绘画操作
+    function drawing(path){
+        if(path.move){
+            ctx.beginPath();
+            ctx.moveTo(path.x,path.y);
+        }
+        ctx.lineTo(path.x,path.y);
+        ctx.strokeStyle = path.color;
+        ctx.stroke();
+    }
+    //十六进制颜色随机
+    function color16(){
+        let r = PrefixInteger((Math.floor(Math.random()*256)).toString(16), 2);
+        let g = PrefixInteger(Math.floor(Math.random()*256).toString(16), 2);
+        let b = PrefixInteger(Math.floor(Math.random()*256).toString(16), 2);
+        return '#' + r + g + b;
+    }
+    // 前置补0
+    function PrefixInteger(num, n) {
+        return (Array(n).join(0) + num).slice(-n);
+    }
+</script>
+</html>

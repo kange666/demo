@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+</head>
+<style type="text/css">
+    #sDiv {
+        text-align: center;
+        border: 1px solid;
+        width: 300px;
+        border-radius:10px;
+        background-color: #00FFFF;
+    }
+    #t {
+        border: 1px solid;
+        width: 260px;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size:20px;
+    }
+    input[type=button] {
+        border: 1px solid;
+        width: 55px;
+        height: 30px;
+        border-radius: 5px;
+        margin: 2px;
+        font-size: 20px;
+    }
+    #c {
+        width: 250px;
+        margin-bottom: 10px;
+
+    }
+</style>
+<body>
+<center>
+    <div id="sDiv">
+        <input type="text" name="t" id="t" value=""/><br/>
+        <input type="button" value="1" onclick="cal(this.value)"/>
+        <input type="button" value="2" onclick="cal(this.value)"/>
+        <input type="button" value="3" onclick="cal(this.value)"/>
+        <input type="button" value="+" onclick="cal(this.value)"/><br/>
+        <input type="button" value="4" onclick="cal(this.value)"/>
+        <input type="button" value="5" onclick="cal(this.value)"/>
+        <input type="button" value="6" onclick="cal(this.value)"/>
+        <input type="button" value="-" onclick="cal(this.value)"/><br/>
+        <input type="button" value="7" onclick="cal(this.value)"/>
+        <input type="button" value="8" onclick="cal(this.value)"/>
+        <input type="button" value="9" onclick="cal(this.value)"/>
+        <input type="button" value="*" onclick="cal(this.value)"/><br/>
+        <input type="button" value="." onclick="cal(this.value)"/>
+        <input type="button" value="0" onclick="cal(this.value)"/>
+        <input type="button" value="=" onclick="cal(this.value)"/>
+        <input type="button" value="/" onclick="cal(this.value)"/><br/>
+        <input type="button" value="C" id="c" onclick="cal(this.value)"/><br/>
+    </div></center>
+<script type="text/javascript">
+    function cal(val){
+        var num = document.getElementById("t");
+        switch (val){
+            case "=":
+                num.value = eval(num.value);
+                break;
+            case"C" :
+                num.value= "";
+                break;
+            default:
+                num.value = num.value+val;
+                break;
+        }
+    }
+</script>
+</body>
+</html>

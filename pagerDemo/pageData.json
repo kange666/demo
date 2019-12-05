@@ -1,0 +1,53 @@
+{
+    "total": 50,
+    "rows": [
+        {
+            "title": "测试通道0001公司",
+            "mid": "24",
+            "realname": "测试账户0001",
+            "mobile": "15868840001",
+            "id": "1",
+            "starttime": "2016-01-01",
+            "endtime": "2022-12-31",
+            "state": "1",
+            "locked": "0",
+            "dstate": 0
+        },
+        {
+            "title": "测试通道0002公司",
+            "mid": "9",
+            "realname": "测试账户0002",
+            "mobile": "15868840002",
+            "id": "2",
+            "starttime": "2016-01-01",
+            "endtime": "2022-12-31",
+            "state": "1",
+            "locked": "0",
+            "dstate": 0
+        },
+        {
+            "title": "测试通道0003公司",
+            "mid": "24",
+            "realname": "测试账户0003",
+            "mobile": "15868840003",
+            "id": "3",
+            "starttime": "2017-04-03",
+            "endtime": "2017-06-10",
+            "state": "1",
+            "locked": "0",
+            "dstate": 0
+        },
+        {
+            "title": "测试通道0004公司",
+            "mid": "24",
+            "realname": "测试账户0004",
+            "mobile": "15868840004",
+            "id": "4",
+            "starttime": "2017-02-08",
+            "endtime": "2017-06-10",
+            "state": "1",
+            "locked": "0",
+            "dstate": 0
+        }
+    ]
+}

@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+<style type="text/css">
+    *{ padding:0; margin:0; list-style:none; border:0;}
+    .all{
+        width:500px;
+        height:200px;
+        padding:7px;
+        border:1px solid #ccc;
+        margin:100px auto;
+        position:relative;
+    }
+    .screen{
+        width:500px;
+        height:200px;
+        overflow:hidden;
+        position:relative;
+    }
+
+    .screen li{ width:500px; height:200px; overflow:hidden; float:left;}
+    .screen ul{ position:absolute; left:0; top:0px; width:3000px;}
+    .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center;}
+    .all ol li{ float:left; width:20px; height:20px; background:#fff; border:1px solid #ccc; margin-left:10px; cursor:pointer;}
+    .all ol li.current{ background:yellow;}
+
+</style>
+
+
+
+<body>
+<div class="all" id='all'>
+    <div class="screen">
+        <ul id="ul">
+            <li><img src="images/taobao/1.jpg" width="500" height="200" /></li>
+            <li><img src="images/taobao/2.jpg" width="500" height="200" /></li>
+            <li><img src="images/taobao/3.jpg" width="500" height="200" /></li>
+            <li><img src="images/taobao/4.jpg" width="500" height="200" /></li>
+            <li><img src="images/taobao/5.jpg" width="500" height="200" /></li>
+        </ul>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    //   匀速滚动函数封装
+    function animate(obj,target) {
+        clearInterval(obj.timer);
+        var speed = obj.offsetLeft>target?-15:15;
+        obj.timer = setInterval(function () {
+            if (Math.abs(obj.offsetLeft-target)>=15){
+                obj.style.left = obj.offsetLeft+speed+"px";
+            }
+            else{
+                clearInterval(obj.timer);
+                obj.style.left = target +"px";
+            }
+
+        },10)
+    }
+
+    window.onload = function () {
+        var all = document.getElementById("all");
+        var ul = document.getElementById("ul");
+        var ullis = ul.children;
+        //1.克隆第一张图片放到ul最后面，做无缝滚动
+        ul.appendChild(ul.children[0].cloneNode(true));
+
+        //2.自动生成小方块
+        var ol = document.createElement("ol");
+        all.appendChild(ol);
+        for(var i=0; i<ullis.length-1; i++){
+            var li = document.createElement("li");
+            li.innerHTML = i+1;
+            ol.appendChild(li);
+        }
+        ol.children[0].className = "current";
+
+        //3.鼠标经过小方块动态效果实现
+        var ollis = ol.children;
+        for(var i=0; i<ollis.length; i++){
+            ollis[i].index = i;
+            ollis[i].onmouseover = function () {
+                for(var k=0; k<ollis.length; k++){
+                    ollis[k].className = "";          //清空小方块格式
+                }
+                this.className = "current";
+                animate(ul,-this.index*500);
+                j = m = this.index;
+            }
+        }
+
+        //4.图片自动滚播,分两步
+        var timer = null;
+        var j = 0;
+        var m = 0;
+        timer = setInterval(autoplay,1000);
+
+        function autoplay() {
+            //第一步：图片自动播放
+            j++;
+            if(j>ullis.length-1){
+                j = 1;
+                ul.style.left = 0;
+            }
+            animate(ul,-j*500);
+            //第二步：小方块自动播放
+            m++;
+            if(m>ollis.length-1){
+                m = 0;
+            }
+            for(var i=0;i<ollis.length;i++){
+                ollis[i].className = "";
+            }
+            ollis[m].className = "current";
+        }
+
+        all.onmouseover = function () {
+            clearInterval(timer);
+        };
+
+        all.onmouseout = function () {
+            timer = setInterval(autoplay,1000);
+        };
+    }
+</script>

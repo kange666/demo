@@ -1,0 +1,112 @@
+/*div{*/
+    /*border: 1px dashed black;*/
+/*}*/
+.prev {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    margin-top: -34px;
+}
+
+.next {
+    position: absolute;
+    right:0;
+    top: 50%;
+    margin-top: -34px;
+}
+
+.prev a {
+    opacity: 0.5;
+    background: #0C0C0C;
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    width: 24px;
+    height: 50px;
+}
+
+.next a {
+    background: #0C0C0C;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+    width: 24px;
+    height: 50px;
+    opacity: 0.5;
+}
+
+.prev img {
+    width: 80%;
+    display: block;
+    border: none;
+    position: absolute;
+    left: 0;
+    top: 12px;
+}
+
+.next img {
+    width: 80%;
+    display: block;
+    position: absolute;
+    border: none;
+    top: 13px;
+    right: 0;
+}
+
+.prev a:hover {
+    opacity: 0.8;
+}
+
+.next a:hover {
+    opacity: 0.8;
+}
+/*按钮 end*/
+.box {
+    width: 66%;
+    height: 300px;
+    margin: 0 auto;
+    background: #fff;
+    position: relative;
+    border:1px solid #5bc0de;
+}
+.n{
+    width: 98%;
+    height: 300px;
+    float: left;
+
+}
+.img {
+    position: absolute;
+    width: 400px;
+    height:260px;
+    margin-right: 20px;
+}
+.img img{
+    height: 100%;
+}
+.box-list ul li {
+    float: left;
+    display: block;
+    position :relative;
+    left: -40px;
+}
+.box-list ul li a {
+    position: relative;
+    display: block;
+    width:400px;
+    height: 260px;
+    text-align: center;
+    margin: auto;
+}
+.loop {
+    width: 1200px;
+    overflow: hidden;
+    position: relative;
+    margin-left: 24px;
+    height: 300px;
+}
+.box-list {
+    width: 4000px;
+    position: absolute;
+
+}
